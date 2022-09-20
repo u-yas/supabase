@@ -95,6 +95,7 @@ const sidebars = {
           items: [
             'guides/auth/row-level-security',
             'guides/auth/managing-user-data',
+            'guides/auth/server-side-rendering',
           ],
         },
         {
