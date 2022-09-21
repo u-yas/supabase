@@ -11,8 +11,9 @@ import TabItem from '@theme/TabItem'
 Invokes a Supabase Function. See the [guide](/docs/guides/functions) for details on writing Functions.
 
 ```dart
-final res = await supabase.functions.invoke('hello', body: {'foo': 'baa'});
+final res = await supabaseClient.functions.invoke('hello', body: {'foo': 'baa'});
 final data = res.data;
+final error = res.error;
 ```
 
 ## Notes
@@ -25,8 +26,9 @@ final data = res.data;
 ### Basic invocation.
 
 ```dart
-final res = await supabase.functions.invoke('hello', body: {'foo': 'baa'});
+final res = await supabaseClient.functions.invoke('hello', body: {'foo': 'baa'});
 final data = res.data;
+final error = res.error;
 ```
 
 ### Specifying response type.
@@ -34,12 +36,13 @@ final data = res.data;
 By default, `invoke()` will parse the response as JSON. You can parse the response in the following formats: `json`, `blob`, `text`, and `arrayBuffer`.
 
 ```dart
-final res = await supabase.functions.invoke(
+final res = await supabaseClient.functions.invoke(
   'hello',
   body: {'foo': 'baa'},
   responseType: ResponseType.text,
 );
 final data = res.data;
+final error = res.error;
 ```
 
 ### Parsing custom headers.
@@ -47,11 +50,11 @@ final data = res.data;
 Any `headers` will be passed through to the function. A common pattern is to pass a logged-in user's JWT token as an Authorization header.
 
 ```dart
-final res = await supabase.functions.invoke(
+final res = await supabaseClient.functions.invoke(
   'hello',
   body: {'foo': 'baa'},
   headers: {
-    'Authorization': 'Bearer ${supabase.auth.currentSession?.accessToken}'
+    'Authorization': 'Bearer ${supabase.auth.session()?.access_token}'
   },
 );
 ```

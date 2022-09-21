@@ -11,10 +11,11 @@ import TabItem from '@theme/TabItem'
 Finds all rows whose value in the stated `column` matches the supplied `pattern` (case insensitive).
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .ilike('name', '%la%');
+  .ilike('name', '%la%')
+  .execute();
 ```
 
 ## Examples
@@ -22,35 +23,39 @@ final data = await supabase
 ### With `select()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .ilike('name', '%la%');
+  .ilike('name', '%la%')
+  .execute();
 ```
 
 ### With `update()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .update({ 'name': 'Mordor' })
-  .ilike('name', '%la%');
+  .ilike('name', '%la%')
+  .execute();
 ```
 
 ### With `delete()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .delete()
-  .ilike('name', '%la%');
+  .ilike('name', '%la%')
+  .execute();
 ```
 
 ### With `rpc()`
 
 ```dart
 // Only valid if the Stored Procedure returns a table type.
-final data = await supabase
+final res = await supabase
   .rpc('echo_all_cities')
-  .ilike('name', '%la%');
+  .ilike('name', '%la%')
+  .execute();
 ```

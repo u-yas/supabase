@@ -9,10 +9,11 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('countries')
   .select('name, id, population_range_millions')
-  .rangeAdjacent('population_range_millions', '[70, 185]');
+  .rangeAdjacent('population_range_millions', '[70, 185]')
+  .execute();
 ```
 
 ## Examples
@@ -20,35 +21,39 @@ final data = await supabase
 ### With `select()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('countries')
   .select('name, id, population_range_millions')
-  .rangeAdjacent('population_range_millions', '[70, 185]');
+  .rangeAdjacent('population_range_millions', '[70, 185]')
+  .execute();
 ```
 
 ### With `update()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('countries')
   .update({ 'name': 'Mordor' })
-  .rangeAdjacent('population_range_millions', '[70, 185]');
+  .rangeAdjacent('population_range_millions', '[70, 185]')
+  .execute();
 ```
 
 ### With `delete()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('countries')
   .delete()
-  .rangeAdjacent('population_range_millions', '[70, 185]');
+  .rangeAdjacent('population_range_millions', '[70, 185]')
+  .execute();
 ```
 
 ### With `rpc()`
 
 ```dart
 // Only valid if the Stored Procedure returns a table type.
-final data = await supabase
+final res = await supabase
   .rpc('echo_all_countries')
-  .rangeAdjacent('population_range_millions', '[70, 185]');
+  .rangeAdjacent('population_range_millions', '[70, 185]')
+  .execute();
 ```

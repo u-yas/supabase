@@ -17,15 +17,17 @@ If a Stored Procedure returns a table response, you can also apply filters.
 You must apply your filters to the end of your query. For example:
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .eq('name', 'The Shire')    // Correct;
+  .eq('name', 'The Shire')    // Correct
+  .execute();
 
-final data = await supabase
+final res = await supabase
   .from('cities')
   .eq('name', 'The Shire')    // Incorrect
-  .select('name, country_id');
+  .select('name, country_id')
+  .execute();
 ```
 
 ### Chaining
@@ -33,9 +35,10 @@ final data = await supabase
 Filters can be chained together to produce advanced queries. For example:
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
   .gte('population', 1000)
-  .lt('population', 10000);
+  .lt('population', 10000)
+  .execute();
 ```

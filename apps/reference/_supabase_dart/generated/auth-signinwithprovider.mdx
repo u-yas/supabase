@@ -11,7 +11,9 @@ import TabItem from '@theme/TabItem'
 Signs the user in using third party OAuth providers.
 
 ```dart
-await supabase.auth.signInWithProvider(Provider.github);
+final res = await supabase.auth.signInWithProvider(Provider.github);
+
+final error = res.error;
 ```
 
 ## Notes
@@ -24,7 +26,9 @@ await supabase.auth.signInWithProvider(Provider.github);
 ### Sign in with provider.
 
 ```dart
-await supabase.auth.signInWithProvider(Provider.github);
+final res = await supabase.auth.signInWithProvider(Provider.github);
+
+final error = res.error;
 ```
 
 ### With `redirectTo`
@@ -33,10 +37,15 @@ Specify the redirect link to bring back the user via deeplink.
 Note that `redirectTo` should be null for Flutter Web.
 
 ```dart
-await supabase.auth.signInWithProvider(Provider.github,
-    options: const AuthOptions(
-        redirectTo:
-            kIsWeb ? null : 'io.supabase.flutter://reset-callback/'));
+final res = await supabase.auth.signInWithProvider(
+  Provider.github,
+  options: AuthOptions(
+      redirectTo: kIsWeb
+          ? null
+          : 'io.supabase.flutter://reset-callback/'),
+);
+
+final error = res.error;
 ```
 
 ### With scopes
@@ -45,11 +54,10 @@ If you need additional data from an OAuth provider, you can include a space-sepa
 You may also need to specify the scopes in the provider's OAuth app settings, depending on the provider.
 
 ```dart
-await supabase.auth.signInWithProvider(Provider.github,
-    options: const AuthOptions(scopes: 'repo gist notifications'));
-...
-// after user comes back from signin flow
-
-final Session? session = supabase.auth.currentSession;
-final String? oAuthToken = session?.providerToken;
+const { user, session, error } = await supabase.auth.signIn({
+  provider: 'github'
+}, {
+  scopes: 'repo gist notifications'
+})
+const oAuthToken = session.provider_token // use to access provider API
 ```

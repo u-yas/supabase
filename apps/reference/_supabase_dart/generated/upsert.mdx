@@ -11,9 +11,10 @@ import TabItem from '@theme/TabItem'
 Performs an UPSERT into the table.
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('messages')
-  .upsert({ 'id': 3, 'message': 'foo', 'username': 'supabot' });
+  .upsert({ 'id': 3, 'message': 'foo', 'username': 'supabot' })
+  .execute();
 ```
 
 ## Notes
@@ -26,9 +27,10 @@ final data = await supabase
 ### Upsert your data
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('messages')
-  .upsert({ 'id': 3, 'message': 'foo', 'username': 'supabot' });
+  .upsert({ 'id': 3, 'message': 'foo', 'username': 'supabot' })
+  .execute();
 ```
 
 ### Upserting into tables with constraints
@@ -38,9 +40,10 @@ If the username 'supabot' already exists, the `onConflict` argument tells supaba
 based on the column passed into `onConflict`.
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('users')
-  .upsert({ 'username': 'supabot' }, { 'onConflict': 'username' });
+  .upsert({ 'username': 'supabot' }, { 'onConflict': 'username' })
+  .execute();
 ```
 
 ### Return the exact number of rows
@@ -48,7 +51,7 @@ final data = await supabase
 Allowed values for count option are `exact`, `planned` and `estimated`.
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('users')
   .upsert({
       'id': 3,

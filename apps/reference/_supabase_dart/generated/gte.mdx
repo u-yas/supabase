@@ -11,10 +11,11 @@ import TabItem from '@theme/TabItem'
 Finds all rows whose value on the stated `column` is greater than or equal to the specified `value`.
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .gte('country_id', 250);
+  .gte('country_id', 250)
+  .execute();
 ```
 
 ## Examples
@@ -22,35 +23,39 @@ final data = await supabase
 ### With `select()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .gte('country_id', 250);
+  .gte('country_id', 250)
+  .execute();
 ```
 
 ### With `update()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .update({ 'name': 'Mordor' })
-  .gte('country_id', 250);
+  .gte('country_id', 250)
+  .execute();
 ```
 
 ### With `delete()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .delete()
-  .gte('country_id', 250);
+  .gte('country_id', 250)
+  .execute();
 ```
 
 ### With `rpc()`
 
 ```dart
 // Only valid if the Stored Procedure returns a table type.
-final data = await supabase
+final res = await supabase
   .rpc('echo_all_cities')
-  .gte('country_id', 250);
+  .gte('country_id', 250)
+  .execute();
 ```

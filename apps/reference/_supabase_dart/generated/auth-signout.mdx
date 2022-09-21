@@ -11,7 +11,9 @@ import TabItem from '@theme/TabItem'
 Signs out the current user, if there is a logged in user.
 
 ```dart
-await supabase.auth.signOut();
+final res = await supabase.auth.signOut();
+
+final error = res.error;
 ```
 
 ## Examples
@@ -19,5 +21,7 @@ await supabase.auth.signOut();
 ### Sign out
 
 ```dart
-await supabase.auth.signOut();
+final res = await supabase.auth.signOut();
+
+final error = res.error;
 ```

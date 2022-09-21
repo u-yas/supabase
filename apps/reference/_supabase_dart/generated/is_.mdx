@@ -13,10 +13,11 @@ A check for exact equality (null, true, false), finds all rows whose value on th
 `is_` and `in_` filter methods are suffixed with `_` to avoid collisions with reserved keywords.
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .is_('name', null);
+  .is_('name', null)
+  .execute();
 ```
 
 ## Examples
@@ -24,35 +25,39 @@ final data = await supabase
 ### With `select()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .select('name, country_id')
-  .is_('name', null);
+  .is_('name', null)
+  .execute();
 ```
 
 ### With `update()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .update({ 'name': 'Mordor' })
-  .is_('name', null);
+  .is_('name', null)
+  .execute();
 ```
 
 ### With `delete()`
 
 ```dart
-final data = await supabase
+final res = await supabase
   .from('cities')
   .delete()
-  .is_('name', null);
+  .is_('name', null)
+  .execute();
 ```
 
 ### With `rpc()`
 
 ```dart
 // Only valid if the Stored Procedure returns a table type.
-final data = await supabase
+final res = await supabase
   .rpc('echo_all_cities')
-  .is_('name', null);
+  .is_('name', null)
+  .execute();
 ```

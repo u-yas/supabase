@@ -14,6 +14,7 @@
         "auth-signin",
         "auth-signout",
         "auth-session",
+        "auth-setsession",
         "auth-user",
         "auth-update",
         "auth-setauth",
@@ -25,7 +26,7 @@
     },
     {
       "type": "category",
-      "label": "Auth (Server Only)",
+      "label": "Auth (Admin Server Only)",
       "items": [
         "auth-api-listusers",
         "auth-api-createuser",

@@ -12,11 +12,13 @@ Uploads a file to an existing bucket.
 
 ```dart
 final avatarFile = File('path/to/file');
-final String path = await supabase.storage.from('avatars').upload(
-      'public/avatar1.png',
-      avatarFile,
-      fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
-    );
+final res = await supabase
+  .storage
+  .from('avatars')
+  .upload('public/avatar1.png', avatarFile, fileOptions: FileOptions(
+    cacheControl: '3600',
+    upsert: false
+  ));
 ```
 
 ## Parameters
@@ -52,7 +54,7 @@ The relative file path. Should be of the format `folder/subfolder/filename.png`.
       required
     </span>
     <span className="method-list-item-validation">
-      <code>File</code>
+      <code>ArrayBuffer</code> | <code>ArrayBufferView</code> | <code>Blob</code> | <code>Buffer</code> | <code>File</code> | <code>FormData</code> | <code>ReadableStream</code> | <code>ReadableStream</code> | <code>URLSearchParams</code> | <code>string</code>
     </span>
   </h4>
   <div class="method-list-item-description">
@@ -61,6 +63,211 @@ The body of the file to be stored in the bucket.
 
   </div>
   
+<ul className="method-list-group">
+  <h5 class="method-list-title method-list-title-isChild expanded">Properties</h5>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      URLSearchParams
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      string
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      ReadableStream
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      ReadableStream
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      FormData
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      File
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      Buffer
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      Blob
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      ArrayBufferView
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+<li className="method-list-item">
+  <h4 className="method-list-item-label">
+    <span className="method-list-item-label-name">
+      ArrayBuffer
+    </span>
+    <span className="method-list-item-label-badge required">
+      required
+    </span>
+    <span className="method-list-item-validation">
+      <code>object</code>
+    </span>
+  </h4>
+  <div class="method-list-item-description">
+
+No description provided.
+
+  </div>
+  
+</li>
+
+</ul>
+
 </li>
 
 <li className="method-list-item">
@@ -76,71 +283,11 @@ The body of the file to be stored in the bucket.
     </span>
   </h4>
   <div class="method-list-item-description">
-  
-<ul className="method-list-group">
-  <h5 class="method-list-title method-list-title-isChild expanded">Properties</h5>
 
-<li className="method-list-item">
-  <h4 className="method-list-item-label">
-    <span className="method-list-item-label-name">
-      cacheControl
-    </span>
-    <span className="method-list-item-label-badge false">
-      optional
-    </span>
-    <span className="method-list-item-validation">
-      <code>string</code>
-    </span>
-  </h4>
-  <div class="method-list-item-description">
-
-The Cache-Control: max-age=[seconds] seconds value.
-
-  </div>
-  
-</li>
-
-<li className="method-list-item">
-  <h4 className="method-list-item-label">
-    <span className="method-list-item-label-name">
-      contentType
-    </span>
-    <span className="method-list-item-label-badge false">
-      optional
-    </span>
-    <span className="method-list-item-validation">
-      <code>string</code>
-    </span>
-  </h4>
-  <div class="method-list-item-description">
-
-The Content-Type header value. By default, the SDK reads the content type and sets the header.
-
-  </div>
-  
-</li>
-
-<li className="method-list-item">
-  <h4 className="method-list-item-label">
-    <span className="method-list-item-label-name">
-      upsert
-    </span>
-    <span className="method-list-item-label-badge false">
-      optional
-    </span>
-    <span className="method-list-item-validation">
-      <code>boolean</code>
-    </span>
-  </h4>
-  <div class="method-list-item-description">
-
-Whether to perform an upsert.
-
-  </div>
-  
-</li>
-
-</ul>
+HTTP headers.
+`cacheControl`: string, the `Cache-Control: max-age=<seconds>` seconds value.
+`contentType`: string, the `Content-Type` header value. Should be specified if using a `fileBody` that is neither `Blob` nor `File` nor `FormData`, otherwise will default to `text/plain;charset=UTF-8`.
+`upsert`: boolean, whether to perform an upsert.
 
   </div>
   
@@ -160,9 +307,11 @@ Whether to perform an upsert.
 
 ```dart
 final avatarFile = File('path/to/file');
-final String path = await supabase.storage.from('avatars').upload(
-      'public/avatar1.png',
-      avatarFile,
-      fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
-    );
+final res = await supabase
+  .storage
+  .from('avatars')
+  .upload('public/avatar1.png', avatarFile, fileOptions: FileOptions(
+    cacheControl: '3600',
+    upsert: false
+  ));
 ```

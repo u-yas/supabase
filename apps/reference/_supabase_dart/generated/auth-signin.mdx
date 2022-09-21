@@ -11,9 +11,10 @@ import TabItem from '@theme/TabItem'
 Log in an existing user, or login via a third-party provider.
 
 ```dart
-final GotrueSessionResponse res = await supabase.auth.signIn(email: 'example@email.com', password: 'example-password');
+final res = await supabase.auth.signIn(email: 'example@email.com', password: 'example-password');
 
-final User? user = res.user;
+final user = res.data?.user;
+final error = res.error;
 ```
 
 ## Notes
@@ -29,9 +30,10 @@ final User? user = res.user;
 ### Sign in with email.
 
 ```dart
-final GotrueSessionResponse res = await supabase.auth.signIn(email: 'example@email.com', password: 'example-password');
+final res = await supabase.auth.signIn(email: 'example@email.com', password: 'example-password');
 
-final User? user = res.user;
+final user = res.data?.user;
+final error = res.error;
 ```
 
 ### Sign in with magic link.
@@ -39,7 +41,9 @@ final User? user = res.user;
 If email is provided, but no password is provided, the user will be sent a "magic link" to their email address, which they can click to open your application with a valid session. By default, a given user can only request a Magic Link once every 60 seconds.
 
 ```dart
-final GotrueSessionResponse res = await supabase.auth.signIn(email: 'example@email.com');
+final res = await supabase.auth.signIn(email: 'example@email.com');
+
+final error = res.error;
 ```
 
 ### Get OAuth sign in URL.
@@ -48,7 +52,8 @@ Passing provider parameter to `signIn()` will return a URL to sign your user in 
 If you are looking to sign in a user via OAuth on Flutter app, go to [`signInWithProvider()`](/docs/reference/dart/auth-signinwithprovider).
 
 ```dart
-final GotrueSessionResponse res = await supabase.auth.signIn(provider: Provider.github);
+final res = await supabase.auth.signIn(provider: Provider.github);
 
-final User? user = res.user;
+final url = res.data?.url;
+final error = res.error;
 ```
